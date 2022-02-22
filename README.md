@@ -23,3 +23,9 @@
 
 <img src="Docu/main_missing.png">
 
+## setup instructions
+
+- compile
+- copy PoorMansIDS.ps1 in the same directory as PoorMansIDS.exe
+- start
+- see setup_src on how-to create a setup.exe installer with InnoSetup
