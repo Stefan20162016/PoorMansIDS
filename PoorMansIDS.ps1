@@ -12,6 +12,11 @@ Write-Host "Running as User: $user"
 
 function runmain
 {
+
+    #Get-Item -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    #Start-Sleep -Seconds 86400
+    #return
+
     # set-Up Variables
     SETUP 
     # get Registry Key/Values and save to file
