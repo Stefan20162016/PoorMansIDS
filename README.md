@@ -21,6 +21,8 @@
 
 ## right click on tray-icon -> exit
 
+## first startup:
+- the powershell script creates the reference files on first start or if one is missing
 <img src="Docu/main_missing.png">
 
 ## setup instructions
