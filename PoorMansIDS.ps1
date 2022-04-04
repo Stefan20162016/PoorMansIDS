@@ -12,11 +12,6 @@ Write-Host "Running as User: $user"
 
 function runmain
 {
-
-    #Get-Item -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-    #Start-Sleep -Seconds 86400
-    #return
-
     # set-Up Variables
     SETUP 
     # get Registry Key/Values and save to file
@@ -82,7 +77,13 @@ function GetAndWriteDiffString($InModuleName, $output_file, $current_output)
     if($diff){
         $diffstring = [string]$diff.InputObject
         $diffstring = $diffstring -replace '\s+', ' '
-        $outstring = "************************`n$diffstring`n************************"
+        #$outstring = "************************`n$diffstring`n************************"
+        $outstring = "************************`n"
+        $diff | ForEach-Object {
+            $v = [string]$_.InputObject
+            $si = [string]$_.SideIndicator
+            $outstring = "$outstring$v $si`n" 
+        }
         Write-Host $outstring -ForegroundColor Red
 
         #(Get-Date -Format "yyyy_MM_dd_HH:mm:ss") + " $user found differences in " + $InModuleName  | Out-File -Append $Script:ReportOutputFile
@@ -231,6 +232,14 @@ function RegKeys
         "HKLM:\SOFTWARE\WOW6432NODE\Microsoft\Windows\CurrentVersion\Run"
         "HKLM:\SOFTWARE\WOW6432NODE\Microsoft\Windows\CurrentVersion\RunOnce" 
         )
+#Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\PendingFileRenameOperations
+#Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Authentication Packages
+#check files in:
+#%ALLUSERSPROFILE%\Start Menu\Programs\Startup\ (this path is localized on non-English versions of Windows before Vista)
+#%USERPROFILE%\Start Menu\Programs\Startup\ (this path is localized on non-English versions of Windows before Vista)
+#Computer\HKEY_CURRENT_USER\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run
+# "HKCU\Software\Microsoft\Command Processor", find the string key/value "Autorun" and enter the filename of a cmd file of your choice. eg, I have this: "C:\Users\username\.autorun.cmd"
+
     $out = ""
 
     foreach($i in $RegKeysArray)
