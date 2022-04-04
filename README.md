@@ -11,7 +11,7 @@
 
 ### if it detects changes a blue box pops up in the bottom right corner of your screen: 
 
-<img src="Docu/bluebox2.png">
+<img src="Docu/bluebox2.png"  width=75%>
 
 ## Main Window
 # double click on the IDS TrayIcon to:
@@ -23,8 +23,13 @@
 
 ## first startup:
 - the powershell script creates the reference files on first start or if one is missing
-<img src="Docu/main_missing.png">
+<img src="Docu/main_missing.png" width=75%>
 
+## detection
+- automatically show the blue ballon
+ <img src="Docu/bluebox.png"  width=75%>
+- in main window you can call the script automatically:
+<img src="Docu/mainwindow_evil2.png"  width=75%>
 ## setup instructions
 
 - compile
